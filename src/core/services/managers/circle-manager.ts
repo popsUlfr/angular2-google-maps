@@ -78,6 +78,10 @@ export class CircleManager {
   setRadius(circle: SebmGoogleMapCircle): Promise<void> {
     return this._circles.get(circle).then((c) => { return c.setRadius(circle.radius); });
   };
+  
+  getNativeCircle(circle: SebmGoogleMapCircle): Promise<mapTypes.Circle> {
+    return this._circles.get(circle);
+  };
 
   createEventObservable<T>(eventName: string, circle: SebmGoogleMapCircle): Observable<T> {
     return Observable.create((observer: Observer<T>) => {
